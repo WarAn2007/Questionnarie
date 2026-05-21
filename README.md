@@ -1,16 +1,63 @@
-# Questionnarie
-Creating manually test with different question types of (true/false, multiple choice, single choice, open quesiton), and flashcards. Results stored in txt files and tests in binary for security from ordinary users( names of files will be entered manually as well)
-### 1. *Creating files "test" stores in .dat files to encode text and secure from data leak from ordinary users*
-### 2. *Import test from .dat files and store results in .txt , because no need to hide the results*
-### 3. *Check the results .txt file to view: who passed test, with which score and from which test file*
-### 4. *( IN PROGRESS) Flashcards*
+# Questionnaire
 
+A lightweight, pure C++ menu-driven console application designed to create, manage, and take custom tests and flashcards. Built using standard file handling streams to keep data structured and organized.
 
-Diana's changes: 
-1. Created a main menu where user can choose 2 modes:
-	I. Test mode (made by Anvar)
-	II. Flashcards mode 
-		-every flashcard set is saved in txt file. The user should enter just a name of set 
-		-to take a test of flashcard the use should choose the name of a set
-		-to see the answer user should press "Enter"
-		-editing flashcard sets also allowed 
+## 🚀 Features
+
+### 🛠️ Test Management & Execution
+* **Option 1: Create Test**
+  * Supports 4 question types: **Single Choice**, **Multiple Choice**, **True/False**, and **Open Questions**.
+  * Custom file naming for output.
+  * Saved as binary `.dat` files to prevent modification and hide test content from ordinary users.
+* **Option 2: Take a Test**
+  * Import any existing `.dat` test file.
+  * Allows custom naming/directory selection for saving results.
+  * Outputs results in clear, readable `.txt` files.
+* **Option 3: View Results**
+  * Displays a summary directly in the console: who took the test, their score, and the source test file used.
+
+### 📇 Flashcards (In Progress)
+* **Option 4: Create Flashcards** *(Coming Soon)* * **Option 5: Take Flashcards** *(Coming Soon)*
+* **Option 6: View Flashcard Results** *(Coming Soon)*
+* **Option 7: Exit**
+
+---
+
+## 🛠️ Tech Stack & Requirements
+
+* **Language:** Pure C++ (Standard C++17 or higher recommended)
+* **IDE/Build System:** Visual Studio (Solution managed via `.slnx`)
+* **OS Compatibility:** Windows (Console mode)
+
+---
+
+## 📦 File Structures
+
+To ensure data integrity and simple reporting, the application splits data into two distinct formats:
+
+| File Type | Purpose | Security Level | Format |
+| :--- | :--- | :--- | :--- |
+| **`.dat`** | Test questions, choices, and answer keys. | **Encoded** (Binary serialization to prevent cheating). | Binary |
+| **`.txt`** | User performance reports and scoring. | **Open Text** (Easy for instructors/creators to review). | Plain Text |
+
+---
+
+## 🚦 Getting Started
+
+### Prerequisites
+* Visual Studio 2022 (with **Desktop development with C++** workload installed).
+
+### Setup and Running
+1. Clone or download this repository.
+2. Open the `Questionnaire.slnx` solution file in Visual Studio.
+3. Build the solution (`Ctrl + Shift + B`).
+4. Run the application (`F5` or `Ctrl + F5`) to launch the console interactive menu.
+
+---
+
+## 🗺️ Roadmap
+- [x] Core Questionnaire engine (Single, Multiple, T/F).
+- [x] Binary file encryption/serialization for `.dat` protection.
+- [ ] Implement multi-type Flashcard generation.
+- [ ] Implement Flashcard study session mode and tracking.
+- [ ] Open question type for tests
