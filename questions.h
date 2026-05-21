@@ -230,3 +230,43 @@ static Question* makeQuestion(QuestionType type) {
     if (type == true_false)      return new TrueFalse();
     return nullptr;
 }
+
+// Diana's part 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+class FlashCard {
+private:
+    string question;
+    string answer;
+
+public:
+    FlashCard() {
+        question = "";
+        answer = "";
+    }
+
+    FlashCard(string q, string a) {
+        question = q;
+        answer = a;
+    }
+
+    void setQuestion(string q) {
+        question = q;
+    }
+
+    void setAnswer(string a) {
+        answer = a;
+    }
+
+    string getQuestion() const {
+        return question;
+    }
+
+    string getAnswer() const {
+        return answer;
+    }
+};

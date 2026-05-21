@@ -3,8 +3,6 @@
 
 class Test {
 public:
-
-
     void createTest(const std::string& filename) {
         int n = 0;
         std::cout << "How many questions? ";
@@ -12,7 +10,7 @@ public:
         std::cin.ignore(256, '\n');
         if (n <= 0) { std::cout << "Must be at least 1.\n"; return; }
 
-		std::vector<Question*> questions; // storage of questions in memory
+        std::vector<Question*> questions; // storage of questions in memory
 
         for (int i = 0; i < n; i++) {
             int typeChoice = 0;
@@ -28,7 +26,7 @@ public:
                 }
                 std::cin.ignore(256, '\n');
             }
-            
+
             Question* q = makeQuestion(static_cast<QuestionType>(typeChoice));
             q->inputFromUser();
             questions.push_back(q);
