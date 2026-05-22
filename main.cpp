@@ -1,7 +1,7 @@
 #include "menu.h"
-#include <iostream>
-#include <string>
+
 using namespace std;
+
 void testMode() {
 	int option2;
 	do {
@@ -10,32 +10,19 @@ void testMode() {
 
 		switch (option2) {
 
-		case 1:
-			case1(); break;// Create Test
+		case 1: case1(); break;// Create Test
 
-		case 2:
-			case2(); break; // Take a test
+		case 2: case2(); break; // Take a test
 
-		case 3:
-			case3(); break; // View results of tests
+		case 3: case3(); break; // View results of tests
 
-		case 4:
-			case4(); break; // Create a Flashcard
-
-		case 5:
-			case5(); break; // Take a Flashcard
-
-		case 6:
-			case6(); break; // View results of flashcards
-
-		case 7:
-			case7();
-			return; // Exit the program
+		case 4: case4(); break; // Exit to main menu
 
 		default:
-			defcase(); // Invalid options handler
+			std::cout << "Invalid number! Choose again from 1 to 4" << std::endl; // Invalid options handler
+			cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
-	} while (option2 != 7);
+	} while (option2 != 4);
 }
 
 void flashcardsMode() {
@@ -95,7 +82,7 @@ int main() {
 	std::cout << "+---------------------------------------+" << std::endl;
 	std::cout << "| =======   C++ TEST MANAGER    ======= |" << std::endl;
 	std::cout << "+---------------------------------------+" << std::endl;
-	std::cout << "\nfiles stored in default directory(default.dat and results.txt, but you can change it in the code)\n";
+	std::cout << "\nFiles stored in Tests and Flashcards(.dat) and Results(.txt)\n";
 
 	do {
 		MainMenu();
@@ -107,6 +94,12 @@ int main() {
 		case 2:
 			flashcardsMode();
 			break;
+
+		case 3:
+			cout << "Exiting program..." << endl;
+			return 0;
+		default:
+			cout << "Invalid choice! Please choose again from 1 to 3." << endl;
 		}
 
 	} while (option1 != 3);

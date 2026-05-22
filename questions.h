@@ -13,7 +13,8 @@
 enum QuestionType {
     single_choice = 1,
     multiple_choice = 2,
-    true_false = 3
+    true_false = 3,
+	open_ended = 4
 };
 
 // -- Helper: parse "1 2 3" into a bool[4] ------------------------------------
@@ -222,20 +223,60 @@ public:
     QuestionType getType() const override { return true_false; }
 };
 
+class OpenEnded : public Question {
+    char correctAnswer[256];
+    
+public:
+    OpenEnded() {
+        memset(correctAnswer, 0, sizeof(correctAnswer));
+    }
+    void inputFromUser() override {
+        std::cout << "  Question text: ";
+        std::string t;
+        std::getline(std::cin, t);
+        strncpy_s(text, t.c_str(), 255);
+        text[255] = '\0';
+
+        std::cout << "  Correct answer: ";
+        std::getline(std::cin, t);
+        strncpy_s(correctAnswer, t.c_str(), 255);
+        correctAnswer[255] = '\0';
+    }
+
+    void display(int num) const override {
+        std::cout << "\n" << num << ") " << text << "\n";
+    }
+
+    bool checkAnswer() override {
+        std::cout << "Your answer: ";
+        std::string line;
+        std::getline(std::cin, line);
+        return line == correctAnswer;
+    }
+
+    void writeToFile(std::ofstream& f) const override {
+        f.write(text, sizeof(text));
+        f.write(correctAnswer, sizeof(correctAnswer));
+    }
+
+    void readFromFile(std::ifstream& f) override {
+        f.read(text, sizeof(text));
+        f.read(correctAnswer, sizeof(correctAnswer));
+    }
+
+    QuestionType getType() const override { return open_ended; }
+};
 // -- Factory: create the right derived object from a type tag ----------------
 
 static Question* makeQuestion(QuestionType type) {
     if (type == single_choice)   return new SingleChoice();
     if (type == multiple_choice) return new MultipleChoice();
     if (type == true_false)      return new TrueFalse();
+	if (type == open_ended)      return new OpenEnded();
     return nullptr;
 }
 
 // Diana's part 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
 using namespace std;
 
 class FlashCard {

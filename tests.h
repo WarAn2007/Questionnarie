@@ -16,8 +16,8 @@ public:
             int typeChoice = 0;
 
             std::cout << "\n--- Question " << (i + 1) << " ---\n";
-            while (typeChoice < 1 || typeChoice > 3) {
-                std::cout << "  Type: [1] Single choice  [2] Multiple choice  [3] True/False\n  >> ";
+            while (typeChoice < 1 || typeChoice > 4) {
+                std::cout << "  Type: [1] Single choice  [2] Multiple choice  [3] True/False  [4] Open-ended\n  >> ";
                 while (!(std::cin >> typeChoice)) {
                     std::cout << "Invalid input data type. Please enter integers only!" << std::endl;
                     std::cin.clear();
@@ -54,7 +54,7 @@ public:
         std::vector<Question*> questions;
         if (!loadFromFile(filename, questions)) return;
 
-        std::cout << "Enter your name: ";
+        std::cout << "Enter your name(left empty for 'Anonymous'): ";
         std::string name;
         std::getline(std::cin, name);
         if (name.empty()) name = "Anonymous";
