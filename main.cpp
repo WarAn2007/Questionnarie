@@ -1,13 +1,14 @@
 #include "menu.h"
-
 using namespace std;
-
+void MainMenu() {
+	cout << "Choose mode: " << endl;
+	cout << "1. Test Mode" << endl;
+	cout << "2. Flashcard mode " << endl;
+}
 void testMode() {
 	int option2;
 	do {
-		// menudisp() from menu.h, displays menu options and provides with chosen option
 		option2 = menudisp();
-
 		switch (option2) {
 
 		case 1: case1(); break;// Create Test
@@ -27,54 +28,38 @@ void testMode() {
 
 void flashcardsMode() {
 	int option3;
+
 	do {
 		option3 = menuForFlashcards();
+
 		switch (option3) {
-		case 1: {
-			string setName;
-			cout << "Enter set name: ";
-			cin.ignore();
-			getline(cin, setName);
-			vector<FlashCard> flashcards = createFlashcards();
-			saveSet(flashcards, setName);
-			break;
-		}
 
-		case 2: {
-			showSets();
+		case 1:
+			createFlashcardsMenu();
 			break;
-		}
 
-		case 3: {
-			showSets();
-			string setName;
-			cout << "\nEnter set name to open: ";
-			cin.ignore();
-			getline(cin, setName);
-			vector<FlashCard> flashcards = loadSet(setName);
-			viewSet(flashcards);
+		case 2:
+			viewFlashcardsMenu();
 			break;
-		}
 
-		case 4: {
-
-			showSets();
-			string setName;
-			cout << "\nEnter set name to test: "; \
-				cin.ignore();
-			getline(cin, setName);
-			vector<FlashCard> flashcards = loadSet(setName);
-			testSet(flashcards);
+		case 3:
+			testFlashcardsMenu();
 			break;
-		}
-		case 5:
-			return;
+
+		case 4:
+			cout << "Exit to main menu...\n";
+			break;
+
 		default:
-			cout << "Invalid choice!\n";
-		}
-	} while (option3 != 5);
-}
 
+			cout << "Invalid number! Choose again from 1 to 4\n";
+
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+
+	} while (option3 != 4);
+}
 
 int main() {
 	int option1;
@@ -83,9 +68,10 @@ int main() {
 	std::cout << "| =======   C++ TEST MANAGER    ======= |" << std::endl;
 	std::cout << "+---------------------------------------+" << std::endl;
 	std::cout << "\nFiles stored in Tests and Flashcards(.dat) and Results(.txt)\n";
+	std::cout << "Choose an option" << std::endl;
+	MainMenu();
 
 	do {
-		MainMenu();
 		cin >> option1;
 		switch (option1) {
 		case 1:

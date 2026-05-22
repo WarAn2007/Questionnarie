@@ -14,7 +14,7 @@ enum QuestionType {
     single_choice = 1,
     multiple_choice = 2,
     true_false = 3,
-	open_ended = 4
+    open_ended = 4
 };
 
 // -- Helper: parse "1 2 3" into a bool[4] ------------------------------------
@@ -225,7 +225,7 @@ public:
 
 class OpenEnded : public Question {
     char correctAnswer[256];
-    
+
 public:
     OpenEnded() {
         memset(correctAnswer, 0, sizeof(correctAnswer));
@@ -272,42 +272,9 @@ static Question* makeQuestion(QuestionType type) {
     if (type == single_choice)   return new SingleChoice();
     if (type == multiple_choice) return new MultipleChoice();
     if (type == true_false)      return new TrueFalse();
-	if (type == open_ended)      return new OpenEnded();
+    if (type == open_ended)      return new OpenEnded();
     return nullptr;
 }
 
 // Diana's part 
-using namespace std;
 
-class FlashCard {
-private:
-    string question;
-    string answer;
-
-public:
-    FlashCard() {
-        question = "";
-        answer = "";
-    }
-
-    FlashCard(string q, string a) {
-        question = q;
-        answer = a;
-    }
-
-    void setQuestion(string q) {
-        question = q;
-    }
-
-    void setAnswer(string a) {
-        answer = a;
-    }
-
-    string getQuestion() const {
-        return question;
-    }
-
-    string getAnswer() const {
-        return answer;
-    }
-};
