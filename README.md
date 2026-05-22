@@ -56,8 +56,6 @@ To ensure data integrity and simple reporting, the application splits data into 
 ---
 
 ## 🗺️ Roadmap
-- [x] Core Questionnaire engine (Single, Multiple, T/F).
+- [x] Core Questionnaire engine (Single, Multiple, T/F, Open Ended).
 - [x] Binary file encryption/serialization for `.dat` protection.
-- [ ] Implement multi-type Flashcard generation.
-- [ ] Implement Flashcard study session mode and tracking.
-- [ ] Open question type for tests
+- [x] Abstract classes for more questions.
