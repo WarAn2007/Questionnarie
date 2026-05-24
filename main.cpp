@@ -60,7 +60,9 @@ void flashcardsMode() {
 
 	} while (option3 != 4);
 }
+void menu() {
 
+}
 int main() {
 	int option1;
 
@@ -68,10 +70,9 @@ int main() {
 	std::cout << "| =======   C++ TEST MANAGER    ======= |" << std::endl;
 	std::cout << "+---------------------------------------+" << std::endl;
 	std::cout << "\nFiles stored in Tests and Flashcards(.dat) and Results(.txt)\n";
-	std::cout << "Choose an option" << std::endl;
-	MainMenu();
 
 	do {
+		MainMenu();
 		cin >> option1;
 		switch (option1) {
 		case 1:
@@ -89,4 +90,7 @@ int main() {
 		}
 
 	} while (option1 != 3);
+
+
+
 }

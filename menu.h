@@ -77,10 +77,7 @@ int menuForFlashcards() {
     cout << "[1] Create flashcards\n";
     cout << "[2] View flashcards\n";
     cout << "[3] Test flashcards\n";
-    cout << "[4] Save set\n";
-    cout << "[5] Load set\n";
-    cout << "[6] Show sets\n";
-    cout << "[7] Exit\n";
+    cout << "[4] Exit\n";
 
     cout << " >> ";
 
